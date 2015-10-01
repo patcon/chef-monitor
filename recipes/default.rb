@@ -26,8 +26,8 @@ ip_type = node["monitor"]["use_local_ipv4"] ? "local_ipv4" : "public_ipv4"
 client_attributes = node["monitor"]["additional_client_attributes"].to_hash
 
 sensu_client node.name do
-  if node.has_key?("cloud")
-    address node["cloud"][ip_type] || node["ipaddress"]
+  if node.has_key?("cloud_v2")
+    address node["cloud_v2"][ip_type] || node["ipaddress"]
   else
     address node["ipaddress"]
   end
